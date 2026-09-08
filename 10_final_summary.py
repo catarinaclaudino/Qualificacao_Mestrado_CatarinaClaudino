@@ -58,7 +58,7 @@ def main():
 
     if getattr(config, "COMPARISON_MODEL_NAME", None):
         lines.append(
-            f"\n**Nota metodológica:** por pedido explícito da pesquisadora "
+            f"\n**Nota metodológica:**"
             f"(2026-09-07), as tabelas abaixo incluem, além do modelo "
             f"formalmente SELECIONADO pela hierarquia BIC_train (coluna "
             f"`role`='selected'), uma linha adicional de COMPARAÇÃO para o "
