@@ -1,0 +1,2 @@
+# Qualificacao_Mestrado_CatarinaClaudino
+Códigos preliminares para teste de metodologias
