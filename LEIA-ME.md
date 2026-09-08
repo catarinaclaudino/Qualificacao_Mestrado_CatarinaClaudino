@@ -1,6 +1,6 @@
 # Como rodar no VS Code — Análise de Degradação CALCE CS2-35
 
-Este projeto implementa as 10 etapas descritas no README original da metodologia (inspeção do
+Este projeto implementa as 10 etapas descritas na metodologia (inspeção do
 dataset → carregamento → processamento → cálculo de SoH → análise exploratória → modelos de
 degradação → validação/resíduos → incerteza → teste de Pettitt → falha funcional/RUL → resumo
 final).
