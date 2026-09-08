@@ -3,8 +3,7 @@
 =======================
 PASSO 3: Processamento dos dados brutos.
 
-Reescrito após auditoria (ver AUDITORIA_CS2_35.md) com as seguintes decisões
-metodológicas EXPLICITAMENTE AUTORIZADAS pela pesquisadora:
+decisões metodológicas:
 
 1. Fonte de capacidade por ciclo: quando o arquivo Arbin tem a aba
    Statistics, ela é a fonte OFICIAL (cada linha de Statistics já é o valor
@@ -216,7 +215,7 @@ def detect_and_exclude_v_dips(per_cycle: pd.DataFrame, battery_id: str):
 
 def main():
     log.info("=" * 70)
-    log.info("PASSO 3: PROCESSAMENTO DOS DADOS (pós-auditoria)")
+    log.info("PASSO 3: PROCESSAMENTO DOS DADOS")
     log.info("=" * 70)
 
     raw_path = config.PROCESSED_DATA_DIR / "01_raw_consolidated.csv"
