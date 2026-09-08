@@ -13,8 +13,7 @@ PASSO 8: Quantificação de incerteza.
 
 Desde 2026-09-07, `best_models.pkl` guarda, por bateria, um dict de
 "roles" ("selected" e, opcionalmente, "comparison" - ver
-config.COMPARISON_MODEL_NAME, pedido EXPLÍCITO da pesquisadora, NAO uma
-inferência deste código). Este script roda o MESMO procedimento de
+config.COMPARISON_MODEL_NAME. Este script roda o MESMO procedimento de
 incerteza para CADA role presente, produzindo tabelas/figuras separadas
 (sufixo de arquivo distingue o role/modelo) - a lógica de cálculo em si
 é INALTERADA.
