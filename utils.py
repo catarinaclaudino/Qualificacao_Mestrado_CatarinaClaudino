@@ -186,12 +186,11 @@ def prediction_interval_margin(n_query, n_arr, resid_std, n_params, alpha):
     de treino/full-fit (`n_arr`) - aproximação padrão para modelos não
     lineares (Passo 8, README Step 8: "Construct 95% prediction intervals").
 
-    Fatorado aqui (2026-09-07) para ser IDENTICO entre o Passo 8
+    Fatorado aqui para ser IDENTICO entre o Passo 8
     (`07_uncertainty_quantification.py`, banda em torno da curva de SoH,
     Table_08/Figura 11) e o Passo 10 (`09_failure_analysis_and_rul.py`,
     propagação para um range de N_F_hat/RUL, Table_10/Figuras 13-14) -
-    pedido explícito da pesquisadora para que o range de RUL derive
-    exatamente da mesma banda de incerteza já reportada no Passo 8, e não
+    para que o range de RUL derive exatamente da mesma banda de incerteza já reportada no Passo 8, e não
     de um cálculo novo e potencialmente inconsistente.
 
     Retorna (margin, t_crit, dof).
