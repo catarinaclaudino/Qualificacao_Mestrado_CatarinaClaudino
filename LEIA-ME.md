@@ -10,7 +10,7 @@ final).
 - Python 3.9 ou mais recente instalado no Windows.
 - VS Code com a extensão "Python" (Microsoft) instalada.
 - Os dados da bateria CS2_35 (arquivos `.xlsx` do CALCE) já devem estar em:
-  `C:\Users\catar\OneDrive\Área de Trabalho\MESTRADO\TESTE_METODOLOGIA\CS2_35`
+  `colocar caminho aqui`
 
 ## 2. Preparar o ambiente
 
@@ -30,8 +30,8 @@ novo com `.venv\Scripts\activate` antes de rodar os scripts.)
 
 Os caminhos já estão configurados por padrão para:
 
-- **Dados de entrada:** `C:\Users\catar\OneDrive\Área de Trabalho\MESTRADO\TESTE_METODOLOGIA\CS2_35`
-- **Resultados de saída:** `C:\Users\catar\OneDrive\Área de Trabalho\MESTRADO\TESTE_METODOLOGIA`
+- **Dados de entrada:** ``colocar caminho aqui``
+- **Resultados de saída:** ``colocar caminho aqui``
 
 Não é necessário editar nada se esses forem os caminhos corretos no seu computador. Se algum dia
 os diretórios mudarem, basta editar as duas linhas correspondentes em `config.py` (linhas ~21-31).
@@ -77,20 +77,9 @@ Atenção: como as etapas dependem dos resultados salvos pelas anteriores (arqui
 - `processed_data/file_processing_summary.csv`: qual fonte de capacidade (Statistics ou
   Channel) foi usada em cada arquivo.
 
-## 6. Leia também
-
-- `AUDITORIA_CS2_35.md`: auditoria metodológica completa do pipeline em relação aos dados reais
-  e ao README original, com as decisões que exigiram autorização explícita.
-- `RELATORIO_AUDITORIA_E_CORRECOES.md`: o que foi corrigido no código após a auditoria, e a
-  comparação "antes vs. depois" dos resultados numéricos.
-- `ANALISE_PLAUSIBILIDADE.md`: análise escrita avaliando se os resultados obtidos na validação com
-  os dados reais fazem sentido físico/estatístico, comparando com valores da literatura sobre a
-  célula CALCE CS2-35 (nota: escrita antes da auditoria — ver nota de atualização no topo do
-  documento).
-
 ## Observação importante sobre os dados
 
-O pipeline foi validado (nesta entrega) com os 25 arquivos `.xlsx` originais do CALCE para a
+O pipeline foi validado com os 25 arquivos `.xlsx` originais do CALCE para a
 célula CS2_35, baixados diretamente de
 [web.calce.umd.edu/batteries/data/CS2_35.zip](https://web.calce.umd.edu/batteries/data/CS2_35.zip).
 Se a pasta `CS2_35` na sua máquina tiver um conjunto diferente de arquivos (mais ou menos ciclos),
