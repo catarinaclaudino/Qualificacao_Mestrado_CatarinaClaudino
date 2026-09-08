@@ -4,11 +4,9 @@
 PASSO 7: Selecao de modelo (hierarquica, treino-only) + validacao temporal.
 
 Esta etapa foi reescrita para seguir EXATAMENTE a hierarquia de selecao de
-modelos especificada pela pesquisadora (substitui a abordagem anterior, que
-selecionava o "melhor modelo" pelo menor RMSE do CONJUNTO DE TESTE - uma
-violacao metodologica, pois usava o teste como criterio de escolha).
+modelos especificada.
 
-Particao dos dados (INALTERADA em relacao a versao anterior):
+Particao dos dados:
     Validacao temporal 70% treino / 30% teste, SEM embaralhamento, ordem
     cronologica preservada (config.TRAIN_FRACTION).
 
@@ -19,8 +17,7 @@ Hierarquia de selecao (NOVA - usa SOMENTE os dados de TREINO):
               (shapiro_pass = p > alpha). Este e um diagnostico formal
               PONTUAL sobre a normalidade dos residuos, REPORTADO na tabela
               de auditoria - NAO e tratado como teste de validade geral do
-              modelo, NAO e combinado numericamente com outras metricas, e
-              (DECISAO EXPLÍCITA DA PESQUISADORA, 2026-09-07: com n_treino~600
+              modelo, NAO e combinado numericamente com outras metricas, e com n_treino~600
               o Shapiro-Wilk rejeita normalidade perfeita para TODOS os 5
               candidatos, travando toda a seleção - a pesquisadora autorizou
               manter Shapiro-Wilk como diagnóstico reportado, mas REMOVEU-O
@@ -60,8 +57,7 @@ histograma, Q-Q plot, e o teste de Shapiro-Wilk sobre esses residuos
 full-fit (Table_06 - um diagnostico DIFERENTE e PRE-EXISTENTE, distinto do
 screening de Shapiro por-candidato feito SOMENTE no treino, acima).
 
-MODELO DE COMPARACAO (config.COMPARISON_MODEL_NAME) - PEDIDO EXPLICITO DA
-PESQUISADORA em 2026-09-07, NAO uma regra automatica deste codigo:
+MODELO DE COMPARACAO (config.COMPARISON_MODEL_NAME):
     Alem do modelo formalmente SELECIONADO pela hierarquia acima, se
     config.COMPARISON_MODEL_NAME estiver definido (e for diferente do
     selecionado), o pipeline reajusta ESSE modelo tambem com TODOS os dados
@@ -69,7 +65,7 @@ PESQUISADORA em 2026-09-07, NAO uma regra automatica deste codigo:
     os Passos 8/9/10 (07,08,09_*.py) TAMBEM para ele - gerando um segundo
     conjunto PARALELO e COMPLETO de saidas, rotulado role="comparison" nas
     tabelas e com sufixo "_comparison_<NomeDoModelo>" nos nomes de arquivo.
-    Isto e uma analise de SENSIBILIDADE solicitada explicitamente - NAO
+    Isto e uma analise de SENSIBILIDADE - NAO
     altera o resultado da selecao formal (Table_Model_Selection_Audit.csv
     continua mostrando "selected_model" exclusivamente conforme a hierarquia
     BIC). Ver docstring de config.COMPARISON_MODEL_NAME para o racional
@@ -148,8 +144,7 @@ def _process_model_for_diagnostics(
     Shapiro-Wilk sobre o full-fit (Table_06) e as 4 figuras de diagnostico de
     residuos (06-09). Usado tanto para o modelo formalmente SELECIONADO pela
     hierarquia do Passo 7 quanto para o modelo de COMPARACAO opcional
-    (config.COMPARISON_MODEL_NAME) - pedido explicito da pesquisadora,
-    2026-09-07 - de modo que ambos recebam EXATAMENTE o mesmo tratamento.
+    (config.COMPARISON_MODEL_NAME) de modo que ambos recebam EXATAMENTE o mesmo tratamento.
 
     Retorna a entrada a ser guardada em best_models[battery_id][role].
     """
@@ -299,8 +294,7 @@ def main():
     best_models = {}
     batteries_without_eligible_model = []
 
-    # Modelo de comparacao (config.COMPARISON_MODEL_NAME) - pedido EXPLICITO
-    # da pesquisadora em 2026-09-07, NAO uma regra automatica deste codigo.
+    # Modelo de comparacao (config.COMPARISON_MODEL_NAME) - NAO uma regra automatica deste codigo.
     # Ver docstring do modulo e de config.COMPARISON_MODEL_NAME.
     comparison_model_name = config.COMPARISON_MODEL_NAME
     any_comparison_processed = False
@@ -463,8 +457,7 @@ def main():
         ax_val.grid(alpha=0.3)
 
         # ------------------------------------------------------------------
-        # MODELO DE COMPARACAO (config.COMPARISON_MODEL_NAME) - PEDIDO
-        # EXPLICITO DA PESQUISADORA em 2026-09-07 (ver docstring do modulo).
+        # MODELO DE COMPARACAO (config.COMPARISON_MODEL_NAME) -
         # NAO participa da selecao formal - apenas recebe o MESMO tratamento
         # de diagnostico/downstream do modelo selecionado, para comparação.
         # ------------------------------------------------------------------
