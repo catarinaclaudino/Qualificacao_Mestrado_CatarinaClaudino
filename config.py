@@ -20,14 +20,14 @@ from pathlib import Path
 # Diretório com os dados brutos da bateria CS2_35 (arquivos .xlsx do CALCE)
 DATA_DIR = Path(os.environ.get(
     "BATTERY_DATA_DIR",
-    r"C:\Users\catar\OneDrive\Área de Trabalho\MESTRADO\TESTE_METODOLOGIA\CS2_35",
+    r"colocar caminho aqui",
 ))
 
 # Diretório onde TODOS os resultados (figuras, tabelas, dados processados,
 # logs) serão gravados
 OUTPUT_DIR = Path(os.environ.get(
     "BATTERY_OUTPUT_DIR",
-    r"C:\Users\catar\OneDrive\Área de Trabalho\MESTRADO\TESTE_METODOLOGIA",
+    r"colocar caminho aqui",
 ))
 
 FIGURES_DIR = OUTPUT_DIR / "figures"
@@ -43,7 +43,7 @@ for _d in (OUTPUT_DIR, FIGURES_DIR, TABLES_DIR, PROCESSED_DATA_DIR, LOGS_DIR):
 BATTERY_ID_DEFAULT = "CS2_35"
 
 # ---------------------------------------------------------------------------
-# 2. PARÂMETROS DA ANÁLISE (Ver README.md para a justificativa de cada um)
+# 2. PARÂMETROS DA ANÁLISE (Ver LEIA-ME.md para a justificativa de cada um)
 # ---------------------------------------------------------------------------
 
 TRAIN_FRACTION = 0.70          # Validação temporal: 70% treino / 30% teste
@@ -62,8 +62,8 @@ MIN_CYCLES_REQUIRED = 20       # Mínimo de ciclos para considerar a bateria vá
 V_DIP_RELATIVE_THRESHOLD = 0.05
 
 # ---------------------------------------------------------------------------
-# 2b. HIERARQUIA DE SELEÇÃO DE MODELOS (Passo 7) - conforme especificação do
-#     usuário: adequação residual (Shapiro-Wilk) + plausibilidade física
+# 2b. HIERARQUIA DE SELEÇÃO DE MODELOS (Passo 7) - conforme especificação
+#     adequação residual (Shapiro-Wilk) + plausibilidade física
 #     (monotonicidade) determinam ELEGIBILIDADE; BIC (calculado SOMENTE nos
 #     dados de treino/ajuste) decide entre os elegiveis; o conjunto de teste
 #     NUNCA participa da seleÇão, apenas da validação final independente.
@@ -92,12 +92,10 @@ MONOTONICITY_GRID_N_POINTS = 2000
 # modelo candidato é avaliada. A malha cobre o intervalo de ciclos
 # efetivamente OBSERVADO da bateria (treino + teste, ou seja, o domínio em
 # que o modelo é de fato usado no restante do pipeline) - NAO um intervalo
-# extrapolado arbitrariamente além do dataset. Sinalizado para revisão da
-# pesquisadora.
-
+# extrapolado arbitrariamente além do dataset.
 # ---------------------------------------------------------------------------
-# 2c. MODELO SECUNDÁRIO PARA COMPARAÇÃO (Passos 8, 9 e 10) - PEDIDO EXPLÍCITO
-#     DA PESQUISADORA em 2026-09-07. NÃO é uma regra automática de "segundo
+# 2c. MODELO SECUNDÁRIO PARA COMPARAÇÃO (Passos 8, 9 e 10) -
+#     NÃO é uma regra automática de "segundo
 #     melhor modelo" inferida por este código - é uma escolha pontual dela
 #     (Polynomial_2 e Power_Law ficaram estatisticamente quase
 #     indistinguíveis pelo BIC_train; ver Table_Model_Selection_Audit.csv,
