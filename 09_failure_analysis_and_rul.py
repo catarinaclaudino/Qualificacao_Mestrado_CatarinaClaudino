@@ -11,13 +11,12 @@ PASSO 10: Análise de falha e RUL (Remaining Useful Life).
 - Intervalo P-F = N_F_hat - N_P (apenas se uma Potencial Falha foi detectada
   no Passo 9); caso contrário, não é calculado
 
-Desde 2026-09-07, `best_models.pkl` e `pettitt_results.pkl` guardam, por
+`best_models.pkl` e `pettitt_results.pkl` guardam, por
 bateria, um dict de "roles" ("selected" e, opcionalmente, "comparison" -
-ver config.COMPARISON_MODEL_NAME, pedido EXPLÍCITO da pesquisadora). Este
+ver config.COMPARISON_MODEL_NAME). Este
 script roda a MESMA análise de falha/RUL para CADA role presente.
 
-ADENDO 4 (2026-09-07) - Range de incerteza do RUL, pedido EXPLÍCITO da
-pesquisadora. Antes deste adendo, N_F_hat e RUL eram valores pontuais
+Range de incerteza do RUL, TESTE. Antes deste adendo, N_F_hat e RUL eram valores pontuais
 únicos, desconectados da banda de predição de 95% já calculada no Passo 8
 (Table_08/Figura 11, em pontos percentuais de SoH). Agora esta mesma banda
 (via `utils.prediction_interval_margin`, idêntica ao Passo 8) é propagada
@@ -25,10 +24,7 @@ para o domínio de ciclos: procuramos onde a curva SoH_modelo(N) - margem(N)
 cruza o limiar (N_F_hat_lower_bound_95pct, falha MAIS PRECOCE/pessimista) e
 onde SoH_modelo(N) + margem(N) cruza o limiar (N_F_hat_upper_bound_95pct,
 falha MAIS TARDIA/otimista). RUL_lower_bound_cycles(N_c) e
-RUL_upper_bound_cycles(N_c) seguem da mesma forma. Isso NAO estava definido
-no README original (Step 8 define apenas a banda sobre a curva de SoH;
-Step 10 definia RUL como valor único) - foi expressamente autorizado nesta
-conversa antes de qualquer implementação.
+RUL_upper_bound_cycles(N_c) seguem da mesma forma.
 
 Saída:
     tables/Table_10_Failure_and_RUL_Analysis.csv (colunas "role"/"model_name" +
